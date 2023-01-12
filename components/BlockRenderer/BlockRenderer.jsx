@@ -1,11 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Cover } from 'components';
 
 export const BlockRenderer = ({ blocks = [] }) => {
-  return blocks.map(block => {
-    switch (block.name) {
+  return blocks.map(({ name, id, attributes }) => {
+    switch (name) {
       case 'core/cover':
-        return <div key={block.id}>core/cover</div>;
+        return (
+          <Cover key={id} url={attributes.url}>
+            core/cover
+          </Cover>
+        );
 
       default:
         return null;
