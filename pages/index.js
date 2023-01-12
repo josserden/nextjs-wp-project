@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import client from 'client';
 import { gql } from '@apollo/client';
 
@@ -33,4 +35,8 @@ export const getStaticProps = async () => {
       data: JSON.parse(blocksJSON),
     },
   };
+};
+
+Home.propTypes = {
+  data: PropTypes.array.isRequired,
 };
