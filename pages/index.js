@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import client from 'client';
 import { gql } from '@apollo/client';
+import { BlockRenderer } from 'components';
+import { cleanAndTransformData } from 'utils';
 
 const Home = ({ data }) => {
-  console.log(data);
+  console.log('PROPS', data);
 
-  return <div>Next JS &amp; WordPress course.</div>;
+  return <BlockRenderer blocks={data} />;
 };
 
 export default Home;
@@ -32,7 +34,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      data: JSON.parse(blocksJSON),
+      data: cleanAndTransformData(blocksJSON),
     },
   };
 };
@@ -40,3 +42,7 @@ export const getStaticProps = async () => {
 Home.propTypes = {
   data: PropTypes.array.isRequired,
 };
+
+/*
+Hot Dang Homes is a West Wales based estate agent with a passion for people and property.
+*/
