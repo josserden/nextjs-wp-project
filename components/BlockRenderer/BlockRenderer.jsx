@@ -1,15 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Cover } from 'components';
+import { Cover, Heading } from 'components';
 
 export const BlockRenderer = ({ blocks = [] }) => {
-  return blocks.map(({ name, id, attributes }) => {
+  return blocks.map(({ name, id, attributes, innerBlocks }) => {
     switch (name) {
       case 'core/cover':
         return (
           <Cover key={id} url={attributes.url}>
-            core/cover
+            <BlockRenderer blocks={innerBlocks} />
           </Cover>
+        );
+
+      case 'core/heading':
+        return (
+          <Heading
+            key={id}
+            content={attributes.content}
+            textAlign={attributes.textAlign}
+            level={attributes.level}
+          />
         );
 
       default:

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Image from 'next/image';
-import { CoverSection } from './Cover.styled';
+import { CoverSection, CoverContainer } from './Cover.styled';
 
 export const Cover = ({ children, url }) => {
   return (
@@ -13,7 +13,7 @@ export const Cover = ({ children, url }) => {
         objectFit="cover"
         className=" mix-blend-soft-light"
       />
-      {children}
+      <CoverContainer>{children}</CoverContainer>
     </CoverSection>
   );
 };
