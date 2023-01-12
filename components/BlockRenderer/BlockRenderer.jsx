@@ -14,5 +14,12 @@ export const BlockRenderer = ({ blocks = [] }) => {
 };
 
 BlockRenderer.propTypes = {
-  blocks: PropTypes.array.isRequired,
+  blocks: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      originalContent: PropTypes.string.isRequired,
+      innerBlocks: PropTypes.arrayOf(PropTypes.object),
+    }).isRequired,
+  ).isRequired,
 };
