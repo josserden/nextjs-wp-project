@@ -5,13 +5,11 @@ import { gql } from '@apollo/client';
 import { BlockRenderer } from 'components';
 import { cleanAndTransformData } from 'utils';
 
-const Home = ({ data }) => {
+export default function Home({ data }) {
   console.log('PROPS', data);
 
   return <BlockRenderer blocks={data} />;
-};
-
-export default Home;
+}
 
 export const getStaticProps = async () => {
   const {
