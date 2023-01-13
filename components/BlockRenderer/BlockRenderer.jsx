@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Cover, Heading } from 'components';
+import { Cover, Heading, Paragraph } from 'components';
+import { theme } from 'theme';
 
 export const BlockRenderer = ({ blocks = [] }) => {
   return blocks.map(({ name, id, attributes, innerBlocks }) => {
@@ -23,7 +24,16 @@ export const BlockRenderer = ({ blocks = [] }) => {
         );
 
       case 'core/paragraph':
-        return <p>text</p>;
+        return (
+          <Paragraph
+            key={id}
+            content={attributes.content}
+            textAlign={attributes.align}
+            textColor={
+              theme[attributes.textColor] ?? attributes.style?.color?.text
+            }
+          />
+        );
 
       default:
         return null;
