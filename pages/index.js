@@ -5,10 +5,10 @@ import { gql } from '@apollo/client';
 import { BlockRenderer } from 'components';
 import { cleanAndTransformData } from 'utils';
 
-export default function Home({ data }) {
-  console.log('PROPS', data);
+export default function Home({ blocks }) {
+  console.log('HOME PROPS', blocks);
 
-  return <BlockRenderer blocks={data} />;
+  return <BlockRenderer blocks={blocks} />;
 }
 
 export const getStaticProps = async () => {
@@ -30,15 +30,17 @@ export const getStaticProps = async () => {
     `,
   });
 
+  const blocks = cleanAndTransformData(blocksJSON);
+
   return {
     props: {
-      data: cleanAndTransformData(blocksJSON),
+      blocks,
     },
   };
 };
 
 Home.propTypes = {
-  data: PropTypes.array.isRequired,
+  blocks: PropTypes.array.isRequired,
 };
 
 /*

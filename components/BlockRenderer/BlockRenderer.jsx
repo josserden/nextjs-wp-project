@@ -22,6 +22,9 @@ export const BlockRenderer = ({ blocks = [] }) => {
           />
         );
 
+      case 'core/paragraph':
+        return <p>text</p>;
+
       default:
         return null;
     }
