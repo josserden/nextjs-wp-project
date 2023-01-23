@@ -9,6 +9,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: '1.25rem',
+        },
+      },
+
       fontFamily: {
         heading: ['Aboreto', 'cursive'],
         body: ['Poppins', 'sans-serif'],

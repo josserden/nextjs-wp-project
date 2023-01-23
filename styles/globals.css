@@ -1,5 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Aboreto&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply font-body;
+}
+
+@layer components {
+  .btn {
+    @apply flex whitespace-nowrap rounded bg-pink-600 p-2.5 font-bold text-slate-50 hover:bg-pink-500;
+  }
+}
