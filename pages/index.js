@@ -2,23 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import client from 'client';
 import { gql } from '@apollo/client';
-import { BlockRenderer } from 'components';
+import { BlockRenderer, MainMenu } from 'components';
 import { cleanAndTransformData } from 'utils';
+import { mapMainMenuItems } from 'utils/mapMainMenuItems';
 
-export default function Home({ blocks }) {
-  console.log('HOME PROPS', blocks);
-
-  return <BlockRenderer blocks={blocks} />;
+export default function Home(props) {
+  return (
+    <>
+      <MainMenu items={props.mainMenuItems} />
+      <BlockRenderer blocks={props.blocks} />
+    </>
+  );
 }
 
 export const getStaticProps = async () => {
-  const {
-    data: {
-      nodeByUri: { blocksJSON },
-    },
-  } = await client.query({
+  const { data } = await client.query({
     query: gql`
-      query NewQuery {
+      query PageQuery {
         nodeByUri(uri: "/") {
           ... on Page {
             id
@@ -26,14 +26,43 @@ export const getStaticProps = async () => {
             blocksJSON
           }
         }
+
+        acfOptionsMainMenu {
+          mainMenu {
+            menuItems {
+              menuItem {
+                destination {
+                  ... on Page {
+                    id
+                    uri
+                  }
+                }
+                label
+              }
+              items {
+                destination {
+                  ... on Page {
+                    id
+                    uri
+                  }
+                }
+                label
+              }
+            }
+          }
+        }
       }
     `,
   });
 
-  const blocks = cleanAndTransformData(blocksJSON);
+  const blocks = cleanAndTransformData(data.nodeByUri.blocksJSON);
+  const mainMenuItems = mapMainMenuItems(
+    data.acfOptionsMainMenu.mainMenu.menuItems,
+  );
 
   return {
     props: {
+      mainMenuItems,
       blocks,
     },
   };
@@ -42,7 +71,3 @@ export const getStaticProps = async () => {
 Home.propTypes = {
   blocks: PropTypes.array.isRequired,
 };
-
-/*
-Hot Dang Homes is a West Wales based estate agent with a passion for people and property.
-*/

@@ -7,6 +7,7 @@ export const cleanAndTransformData = blocksJSON => {
     blocks.forEach(block => {
       block.id = uuidv4();
 
+
       if (block.innerBlocks?.length) {
         assignId(block.innerBlocks);
       }

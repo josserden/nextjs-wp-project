@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { gql } from '@apollo/client';
 import client from 'client';
+import PropTypes from 'prop-types';
 import { cleanAndTransformData } from 'utils';
 import { BlockRenderer } from 'components';
 
