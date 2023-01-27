@@ -4,8 +4,6 @@ import React from 'react';
 import { FaHouseUser, FaHeart } from 'react-icons/fa';
 
 export const MainMenu = props => {
-  console.log('mainMenu', props);
-
   return (
     <header className="sticky top-0 left-0 z-50 bg-slate-800">
       <div className="container flex items-center">
