@@ -9,4 +9,6 @@ export * from './MainMenu/MainMenu';
 export * from './Page/Page';
 export * from './Paragraph/Paragraph';
 export * from './PostTitle/PostTitle';
+export * from './PropertyCard/PropertyCard';
 export * from './PropertySearch/PropertySearch';
+export * from './Results/Results';
