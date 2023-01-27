@@ -8,6 +8,7 @@ import {
   Heading,
   Paragraph,
   PostTitle,
+  PropertySearch,
 } from 'components';
 import { theme } from 'theme';
 
@@ -95,6 +96,9 @@ export const BlockRenderer = ({ blocks = [] }) => {
             textAlign={attributes.textAlign}
           />
         );
+
+      case 'acf/propertysearch':
+        return <PropertySearch key={id} />;
 
       default: {
         console.log('UNKNOWN', block);
