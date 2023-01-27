@@ -1,4 +1,4 @@
-import React from 'react';
+import Image from 'next/image';
 import PropTypes from 'prop-types';
 import {
   CallToActionBtn,
@@ -9,7 +9,6 @@ import {
   Paragraph,
 } from 'components';
 import { theme } from 'theme';
-import Image from 'next/image';
 
 export const BlockRenderer = ({ blocks = [] }) => {
   return blocks.map(block => {
