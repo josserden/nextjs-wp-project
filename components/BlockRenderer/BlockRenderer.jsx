@@ -1,6 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CallToActionBtn, Cover, Heading, Paragraph } from 'components';
+import {
+  CallToActionBtn,
+  Column,
+  Columns,
+  Cover,
+  Heading,
+  Paragraph,
+} from 'components';
 import { theme } from 'theme';
 
 export const BlockRenderer = ({ blocks = [] }) => {
@@ -45,6 +52,20 @@ export const BlockRenderer = ({ blocks = [] }) => {
             destination={attributes.data.destination ?? '/'}
             align={attributes.data.align}
           />
+        );
+
+      case 'core/columns':
+        return (
+          <Columns key={id} isStackedOnMobile={attributes.isStackedOnMobile}>
+            <BlockRenderer blocks={innerBlocks} />
+          </Columns>
+        );
+
+      case 'core/column':
+        return (
+          <Column key={id} width={attributes.width}>
+            <BlockRenderer blocks={innerBlocks} />
+          </Column>
         );
 
       default: {

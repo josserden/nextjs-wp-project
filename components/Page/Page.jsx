@@ -1,5 +1,5 @@
 import { BlockRenderer, MainMenu } from 'components';
-import React from 'react';
+import PropTypes from 'prop-types';
 
 export const Page = ({ mainMenuItems, blocks, callToAction }) => {
   return (
@@ -8,4 +8,10 @@ export const Page = ({ mainMenuItems, blocks, callToAction }) => {
       <BlockRenderer blocks={blocks} />
     </>
   );
+};
+
+Page.propTypes = {
+  mainMenuItems: PropTypes.arrayOf(PropTypes.object),
+  blocks: PropTypes.arrayOf(PropTypes.object),
+  callToAction: PropTypes.object,
 };

@@ -1,7 +1,8 @@
 import { ButtonLink } from 'components';
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export const CallToActionBtn = ({ label, destination, align }) => {
+export const CallToActionBtn = ({ label, destination, align = 'left' }) => {
   const alignMap = {
     left: 'text-align',
     center: 'text-center',
@@ -13,4 +14,10 @@ export const CallToActionBtn = ({ label, destination, align }) => {
       <ButtonLink destination={destination} label={label} />
     </div>
   );
+};
+
+CallToActionBtn.propTypes = {
+  label: PropTypes.string.isRequired,
+  destination: PropTypes.string.isRequired,
+  align: PropTypes.string,
 };

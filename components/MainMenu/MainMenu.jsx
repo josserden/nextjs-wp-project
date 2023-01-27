@@ -1,6 +1,6 @@
 import { ButtonLink } from 'components';
 import Link from 'next/link';
-import React from 'react';
+import PropTypes from 'prop-types';
 import { FaHouseUser, FaHeart } from 'react-icons/fa';
 
 export const MainMenu = props => {
@@ -55,4 +55,21 @@ export const MainMenu = props => {
       </div>
     </header>
   );
+};
+
+MainMenu.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      destination: PropTypes.string.isRequired,
+      subMenuItems: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.string.isRequired,
+          label: PropTypes.string.isRequired,
+          destination: PropTypes.string.isRequired,
+        }),
+      ),
+    }).isRequired,
+  ),
 };

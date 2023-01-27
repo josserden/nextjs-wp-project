@@ -17,5 +17,5 @@ export const Paragraph = ({ content, textAlign = 'left', textColor }) => {
 Paragraph.propTypes = {
   textAlign: PropTypes.string,
   content: PropTypes.string.isRequired,
-  textColor: PropTypes.string.isRequired,
+  textColor: PropTypes.string,
 };
