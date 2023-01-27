@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Cover, Heading, Paragraph } from 'components';
+import { CallToActionBtn, Cover, Heading, Paragraph } from 'components';
 import { theme } from 'theme';
 
 export const BlockRenderer = ({ blocks = [] }) => {
-  return blocks.map(({ name, id, attributes, innerBlocks }) => {
+  return blocks.map(block => {
+    const { id, name, attributes, innerBlocks } = block;
+
     switch (name) {
       case 'core/cover':
         return (
@@ -35,8 +37,20 @@ export const BlockRenderer = ({ blocks = [] }) => {
           />
         );
 
-      default:
+      case 'acf/cta-button':
+        return (
+          <CallToActionBtn
+            key={id}
+            label={attributes.data.label}
+            destination={attributes.data.destination ?? '/'}
+            align={attributes.data.align}
+          />
+        );
+
+      default: {
+        console.log('UNKNOWN', block);
         return null;
+      }
     }
   });
 };
