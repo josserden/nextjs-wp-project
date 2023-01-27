@@ -9,15 +9,17 @@ import { getPageStaticProps } from 'utils/getPageStatisProps';
 export default Page;
 
 export const getStaticProps = getPageStaticProps;
+
 export const getStaticPaths = async () => {
-  const {
-    data: {
-      pages: { nodes },
-    },
-  } = await client.query({
+  const { data } = await client.query({
     query: gql`
       query AllPagesQuery {
         pages {
+          nodes {
+            uri
+          }
+        }
+        properties {
           nodes {
             uri
           }
@@ -27,7 +29,7 @@ export const getStaticPaths = async () => {
   });
 
   return {
-    paths: nodes.map(({ uri }) => ({
+    paths: [...data.pages.nodes, ...data.properties.nodes].map(({ uri }) => ({
       params: {
         slug: uri.substring(1).split('/'),
       },

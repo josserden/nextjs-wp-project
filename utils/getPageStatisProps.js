@@ -15,6 +15,11 @@ export const getPageStaticProps = async context => {
             title
             blocksJSON
           }
+          ... on Property {
+            id
+            title
+            blocksJSON
+          }
         }
 
         acfOptionsMainMenu {
@@ -65,9 +70,11 @@ export const getPageStaticProps = async context => {
     label: data.acfOptionsMainMenu.mainMenu.callToAction.label,
     destination: data.acfOptionsMainMenu.mainMenu.callToAction?.destination.uri,
   };
+  const title = data.nodeByUri.title;
 
   return {
     props: {
+      title,
       blocks,
       mainMenuItems,
       callToAction,

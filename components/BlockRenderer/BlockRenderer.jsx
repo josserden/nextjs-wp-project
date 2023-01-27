@@ -7,6 +7,7 @@ import {
   Cover,
   Heading,
   Paragraph,
+  PostTitle,
 } from 'components';
 import { theme } from 'theme';
 
@@ -16,11 +17,13 @@ export const BlockRenderer = ({ blocks = [] }) => {
 
     switch (name) {
       case 'core/cover':
+        console.log('COVER', block);
         return (
           <Cover key={id} url={attributes.url}>
             <BlockRenderer blocks={innerBlocks} />
           </Cover>
         );
+
       case 'core/heading':
         return (
           <Heading
@@ -30,6 +33,7 @@ export const BlockRenderer = ({ blocks = [] }) => {
             level={attributes.level}
           />
         );
+
       case 'core/paragraph':
         return (
           <Paragraph
@@ -41,6 +45,7 @@ export const BlockRenderer = ({ blocks = [] }) => {
             }
           />
         );
+
       case 'acf/cta-button':
         return (
           <CallToActionBtn
@@ -50,18 +55,21 @@ export const BlockRenderer = ({ blocks = [] }) => {
             align={attributes.data.align}
           />
         );
+
       case 'core/columns':
         return (
           <Columns key={id} isStackedOnMobile={attributes.isStackedOnMobile}>
             <BlockRenderer blocks={innerBlocks} />
           </Columns>
         );
+
       case 'core/column':
         return (
           <Column key={id} width={attributes.width}>
             <BlockRenderer key={id} blocks={innerBlocks} />
           </Column>
         );
+
       case 'core/image':
         return (
           <Image
@@ -72,10 +80,22 @@ export const BlockRenderer = ({ blocks = [] }) => {
             alt={attributes.alt || ''}
           />
         );
+
       case 'core/group':
         return <BlockRenderer key={id} blocks={innerBlocks} />;
+
       case 'core/block':
         return <BlockRenderer key={id} blocks={innerBlocks} />;
+
+      case 'core/post-title':
+        return (
+          <PostTitle
+            key={id}
+            level={attributes.level}
+            textAlign={attributes.textAlign}
+          />
+        );
+
       default: {
         console.log('UNKNOWN', block);
         return null;
