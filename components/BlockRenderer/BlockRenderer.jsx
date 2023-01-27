@@ -9,6 +9,7 @@ import {
   Paragraph,
 } from 'components';
 import { theme } from 'theme';
+import Image from 'next/image';
 
 export const BlockRenderer = ({ blocks = [] }) => {
   return blocks.map(block => {
@@ -21,7 +22,6 @@ export const BlockRenderer = ({ blocks = [] }) => {
             <BlockRenderer blocks={innerBlocks} />
           </Cover>
         );
-
       case 'core/heading':
         return (
           <Heading
@@ -31,7 +31,6 @@ export const BlockRenderer = ({ blocks = [] }) => {
             level={attributes.level}
           />
         );
-
       case 'core/paragraph':
         return (
           <Paragraph
@@ -43,7 +42,6 @@ export const BlockRenderer = ({ blocks = [] }) => {
             }
           />
         );
-
       case 'acf/cta-button':
         return (
           <CallToActionBtn
@@ -53,21 +51,32 @@ export const BlockRenderer = ({ blocks = [] }) => {
             align={attributes.data.align}
           />
         );
-
       case 'core/columns':
         return (
           <Columns key={id} isStackedOnMobile={attributes.isStackedOnMobile}>
             <BlockRenderer blocks={innerBlocks} />
           </Columns>
         );
-
       case 'core/column':
         return (
           <Column key={id} width={attributes.width}>
-            <BlockRenderer blocks={innerBlocks} />
+            <BlockRenderer key={id} blocks={innerBlocks} />
           </Column>
         );
-
+      case 'core/image':
+        return (
+          <Image
+            key={id}
+            src={attributes.url}
+            width={attributes.width}
+            height={attributes.height}
+            alt={attributes.alt || ''}
+          />
+        );
+      case 'core/group':
+        return <BlockRenderer key={id} blocks={innerBlocks} />;
+      case 'core/block':
+        return <BlockRenderer key={id} blocks={innerBlocks} />;
       default: {
         console.log('UNKNOWN', block);
         return null;
