@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useReducer } from 'react';
 import { FormInput } from 'components';
 import {
   FiltersContainer,
@@ -6,22 +6,15 @@ import {
   CheckboxLabel,
   LabelText,
 } from './Filters.styled';
+import { reducer, initialState } from 'utils/constants';
 
 export const Filters = ({ onSearch }) => {
-  const [hasParking, setHasParking] = useState(false);
-  const [petFriendly, setPetFriendly] = useState(false);
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(0);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    onSearch({
-      hasParking,
-      petFriendly,
-      minPrice,
-      maxPrice,
-    });
+    onSearch(state);
   };
 
   return (
@@ -32,8 +25,8 @@ export const Filters = ({ onSearch }) => {
             <FormInput
               type="checkbox"
               className="grow-1"
-              checked={hasParking}
-              onChange={() => setHasParking(!hasParking)}
+              checked={state.hasParking}
+              onChange={() => dispatch({ type: 'hasParking' })}
             />
             <LabelText className="shrink">Has parking</LabelText>
           </CheckboxLabel>
@@ -42,8 +35,8 @@ export const Filters = ({ onSearch }) => {
             <FormInput
               type="checkbox"
               className="grow-1"
-              checked={petFriendly}
-              onChange={() => setPetFriendly(!petFriendly)}
+              checked={state.petFriendly}
+              onChange={() => dispatch({ type: 'petFriendly' })}
             />
             <LabelText className="shrink">Pet friendly</LabelText>
           </CheckboxLabel>
@@ -56,8 +49,10 @@ export const Filters = ({ onSearch }) => {
               type="number"
               className="w-80"
               placeholder="Min price"
-              value={minPrice}
-              onChange={e => setMinPrice(e.target.value)}
+              value={state.minPrice}
+              onChange={e =>
+                dispatch({ type: 'minPrice', payload: e.target.value })
+              }
             />
           </label>
 
@@ -67,8 +62,10 @@ export const Filters = ({ onSearch }) => {
               type="number"
               className="w-80"
               placeholder="Max price"
-              value={maxPrice}
-              onChange={e => setMaxPrice(e.target.value)}
+              value={state.maxPrice}
+              onChange={e =>
+                dispatch({ type: 'maxPrice', payload: e.target.value })
+              }
             />
           </LabelText>
         </div>
