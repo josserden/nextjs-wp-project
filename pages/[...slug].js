@@ -1,10 +1,7 @@
-import React from 'react';
 import { gql } from '@apollo/client';
 import client from 'client';
-import PropTypes from 'prop-types';
-import { cleanAndTransformData } from 'utils';
 import { Page } from 'components';
-import { getPageStaticProps } from 'utils/getPageStatisProps';
+import { getPageStaticProps } from 'utils/getPageStaticProps';
 
 export default Page;
 
