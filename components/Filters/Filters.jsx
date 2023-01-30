@@ -1,12 +1,12 @@
 import { useReducer } from 'react';
 import { FormInput } from 'components';
+import { reducer, initialState } from 'utils/constants';
 import {
   FiltersContainer,
   Form,
   CheckboxLabel,
   LabelText,
 } from './Filters.styled';
-import { reducer, initialState } from 'utils/constants';
 
 export const Filters = ({ onSearch }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
