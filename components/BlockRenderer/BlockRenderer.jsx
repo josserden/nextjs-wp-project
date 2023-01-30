@@ -5,6 +5,7 @@ import {
   Column,
   Columns,
   Cover,
+  FormspreeForm,
   Heading,
   Paragraph,
   PostTitle,
@@ -99,6 +100,9 @@ export const BlockRenderer = ({ blocks = [] }) => {
 
       case 'acf/propertysearch':
         return <PropertySearch key={id} />;
+
+      case 'acf/formspreeform':
+        return <FormspreeForm key={id} formId={attributes.data.form_id} />;
 
       default: {
         console.log('UNKNOWN', block);
