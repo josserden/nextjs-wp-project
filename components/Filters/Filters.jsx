@@ -1,116 +1,46 @@
 import React from 'react';
+import { FormInput } from 'components';
+import {
+  FiltersContainer,
+  Form,
+  CheckboxLabel,
+  LabelText,
+} from './Filters.styled';
 
 export const Filters = () => {
   return (
-    <>
-      <div class="container">
-        <form class="mx-auto grid max-w-5xl grid-cols-1 gap-6">
-          <label class="block">
-            <span class="text-gray-700">Full name</span>
-            <input
-              type="text"
-              class="
-                    mt-1
-                    block
-                    w-full
-                    rounded-md
-                    border-gray-300
-                    shadow-sm
-                    focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
-                  "
-              placeholder=""
-            />
+    <FiltersContainer>
+      <Form>
+        <div className="flex flex-col gap-2">
+          <CheckboxLabel>
+            <FormInput type="checkbox" className="grow-1" />
+            <LabelText className="shrink">Has parking</LabelText>
+          </CheckboxLabel>
+
+          <CheckboxLabel>
+            <FormInput type="checkbox" className="block" />
+            <LabelText className="shrink">Pet friendly</LabelText>
+          </CheckboxLabel>
+        </div>
+
+        <div className="flex items-center justify-center gap-5">
+          <label className="relative">
+            <LabelText class="absolute -top-6 left-2">Min price</LabelText>
+            <FormInput type="number" className="w-80" placeholder="Min price" />
           </label>
-          <label class="block">
-            <span class="text-gray-700">Email address</span>
-            <input
-              type="email"
-              class="
-                    mt-1
-                    block
-                    w-full
-                    rounded-md
-                    border-gray-300
-                    shadow-sm
-                    focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
-                  "
-              placeholder="john@example.com"
-            />
-          </label>
-          <label class="block">
-            <span class="text-gray-700">When is your event?</span>
-            <input
-              type="date"
-              class="
-                    mt-1
-                    block
-                    w-full
-                    rounded-md
-                    border-gray-300
-                    shadow-sm
-                    focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
-                  "
-            />
-          </label>
-          <label class="block">
-            <span class="text-gray-700">What type of event is it?</span>
-            <select
-              class="
-                    mt-1
-                    block
-                    w-full
-                    rounded-md
-                    border-gray-300
-                    shadow-sm
-                    focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
-                  "
-            >
-              <option>Corporate event</option>
-              <option>Wedding</option>
-              <option>Birthday</option>
-              <option>Other</option>
-            </select>
-          </label>
-          <label class="block">
-            <span class="text-gray-700">Additional details</span>
-            <textarea
-              class="
-                    mt-1
-                    block
-                    w-full
-                    rounded-md
-                    border-gray-300
-                    shadow-sm
-                    focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
-                  "
-              rows="3"
-            ></textarea>
-          </label>
-          <div class="block">
-            <div class="mt-2">
-              <div>
-                <label class="inline-flex items-center">
-                  <input
-                    type="checkbox"
-                    class="
-                          rounded
-                          border-gray-300
-                          text-indigo-600
-                          shadow-sm
-                          focus:border-indigo-300
-                          focus:ring
-                          focus:ring-indigo-200
-                          focus:ring-opacity-50
-                          focus:ring-offset-0
-                        "
-                  />
-                  <span class="ml-2">Email me news and special offers</span>
-                </label>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-    </>
+
+          <LabelText className="relative">
+            <LabelText class="absolute -top-6 left-2">Max price</LabelText>
+            <FormInput type="number" className="w-80" placeholder="Max price" />
+          </LabelText>
+        </div>
+
+        <div className="flex items-center">
+          <button type="submit" className="btn">
+            Search
+          </button>
+        </div>
+      </Form>
+    </FiltersContainer>
   );
 };
