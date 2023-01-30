@@ -24,12 +24,12 @@ export const PropertyCard = ({ property }) => {
 
   return (
     <Link href={destination}>
-      <a className="grid grid-cols-1 gap-4 rounded-lg border bg-slate-50 p-4 shadow-sm shadow-indigo-100 transition-colors hover:bg-slate-100">
-        <div className="flex w-full overflow-hidden rounded-md">
+      <a className="grid grid-cols-1 gap-4 rounded-lg border bg-slate-50 p-4 shadow-sm shadow-indigo-100 transition-colors hover:bg-slate-100 ">
+        <div className="flex h-[250px] w-full overflow-hidden rounded-md border shadow">
           <Image
             src={image}
             alt={title}
-            width={400}
+            width={450}
             height={250}
             objectFit="cover"
           />
