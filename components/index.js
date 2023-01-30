@@ -6,7 +6,7 @@ export * from './Columns/Columns';
 export * from './Cover/Cover';
 export * from './Filters/Filters';
 export * from './FormInput/FormInput';
-export * from './FormInput/FormLabel';
+export * from './FormInput/FormInput';
 export * from './Heading/Heading';
 export * from './MainMenu/MainMenu';
 export * from './Page/Page';
