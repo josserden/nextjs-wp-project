@@ -17,7 +17,7 @@ export const MainMenu = props => {
             {props.items.map(item => (
               <li
                 key={item.id}
-                className="group relative cursor-pointer hover:bg-slate-700"
+                className="group relative cursor-pointer transition-colors hover:bg-slate-700"
                 tabIndex={0}
                 role="link"
               >
@@ -30,10 +30,10 @@ export const MainMenu = props => {
                     {item.subMenuItems.map(subItem => (
                       <li
                         key={subItem.id}
-                        className="hidden bg-slate-800 text-right group-hover:block"
+                        className="hidden h-0 bg-slate-800 text-right transition-all group-hover:block group-hover:h-auto"
                       >
                         <Link href={subItem.destination}>
-                          <a className="block whitespace-nowrap p-5 hover:bg-slate-700">
+                          <a className="block whitespace-nowrap p-5 transition-colors hover:bg-slate-700">
                             {subItem.label}
                           </a>
                         </Link>
