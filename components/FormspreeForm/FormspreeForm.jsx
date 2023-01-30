@@ -9,7 +9,7 @@ export const FormspreeForm = ({ formId }) => {
     return (
       <section className="py-20">
         <div className="container">
-          <b className=" block text-center font-body text-3xl uppercase text-sky-700">
+          <b className=" block text-center font-body text-5xl uppercase text-sky-700">
             Thanks for joining!
           </b>
         </div>
@@ -20,6 +20,10 @@ export const FormspreeForm = ({ formId }) => {
   return (
     <section className="py-20">
       <div className="container">
+        <h1 class="mb-10 text-center text-5xl font-bold uppercase">
+          Send us a message
+        </h1>
+
         <form
           onSubmit={handleSubmit}
           className="mx-auto grid max-w-3xl grid-cols-1 gap-4 rounded-md border bg-slate-50 px-7 py-10 shadow-md"
