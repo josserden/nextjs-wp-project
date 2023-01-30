@@ -1,4 +1,5 @@
-import { useReducer } from 'react';
+import { useReducer, useEffect } from 'react';
+import queryString from 'query-string';
 import { FormInput } from 'components';
 import { reducer, initialState } from 'utils/constants';
 import {
@@ -10,6 +11,30 @@ import {
 
 export const Filters = ({ onSearch }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    const { search } = window.location;
+    const { hasParking, petFriendly, minPrice, maxPrice } =
+      queryString.parse(search);
+
+    if (hasParking === 'true') {
+      dispatch({ type: 'hasParking' });
+      state.hasParking = true;
+    }
+
+    if (petFriendly === 'true') {
+      dispatch({ type: 'petFriendly' });
+      state.petFriendly = true;
+    }
+
+    if (minPrice) {
+      dispatch({ type: 'minPrice', payload: minPrice });
+    }
+
+    if (maxPrice) {
+      dispatch({ type: 'maxPrice', payload: maxPrice });
+    }
+  }, []);
 
   const handleSubmit = e => {
     e.preventDefault();
