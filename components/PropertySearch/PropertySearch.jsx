@@ -41,9 +41,13 @@ export const PropertySearch = () => {
     search();
   };
 
+  const handleSearch = async filters => {
+    console.log('FILTERS: ', filters);
+  };
+
   return (
     <section className="py-10">
-      <Filters />
+      <Filters onSearch={handleSearch} />
       <Results properties={properties} />
       <Pagination
         totalPages={Math.ceil(totalResults / PAGE_SIZE)}
