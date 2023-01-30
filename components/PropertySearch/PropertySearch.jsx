@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import queryString from 'query-string';
-import { Pagination, Results } from 'components';
+import { Filters, Pagination, Results } from 'components';
 import { PAGE_SIZE } from 'utils/constants';
 
 export const PropertySearch = () => {
@@ -42,12 +42,13 @@ export const PropertySearch = () => {
   };
 
   return (
-    <>
+    <section className="py-10">
+      <Filters />
       <Results properties={properties} />
       <Pagination
         totalPages={Math.ceil(totalResults / PAGE_SIZE)}
         onPageClick={handlePageClick}
       />
-    </>
+    </section>
   );
 };
