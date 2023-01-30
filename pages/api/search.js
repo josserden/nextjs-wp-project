@@ -4,10 +4,13 @@ import { PAGE_SIZE } from 'utils/constants';
 
 const handler = async (req, res) => {
   try {
+    const filters = JSON.parse(req.body);
     const { data } = await client.query({
       query: gql`
         query AllPropertiesQuery {
-          properties(where: { offsetPagination: { size: ${PAGE_SIZE}, offset: 0 } }) {
+          properties(where: { offsetPagination: { size: ${PAGE_SIZE}, offset: ${
+        ((filters.page || 1) - 1) * PAGE_SIZE
+      } } }) {
             pageInfo {
               offsetPagination {
                 total

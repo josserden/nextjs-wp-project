@@ -1,29 +1,53 @@
-import { Pagination, Results } from 'components';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import queryString from 'query-string';
+import { Pagination, Results } from 'components';
 import { PAGE_SIZE } from 'utils/constants';
 
 export const PropertySearch = () => {
   const [properties, setProperties] = useState([]);
   const [totalResults, setTotalResults] = useState(0);
+  const router = useRouter();
+
+  const search = async () => {
+    const { page } = queryString.parse(window.location.search);
+    const response = await fetch('/api/search', {
+      method: 'POST',
+      body: JSON.stringify({ page: parseInt(page) || '1' }),
+    });
+    const data = await response.json();
+
+    console.log('PAGE: ', page);
+
+    console.log('SEARCH DATA: ', data);
+
+    setProperties(data.properties);
+    setTotalResults(data.total);
+  };
 
   useEffect(() => {
-    const search = async () => {
-      const response = await fetch('/api/search');
-      const data = await response.json();
-
-      console.log('SEARCH DATA: ', data);
-
-      setProperties(data.properties);
-      setTotalResults(data.total);
-    };
-
     search();
   }, []);
+
+  const handlePageClick = async pageNumber => {
+    await router.push(
+      `${router.query.slug.join('/')}?page=${pageNumber}`,
+      null,
+      {
+        shallow: true,
+      },
+    );
+
+    search();
+  };
 
   return (
     <>
       <Results properties={properties} />
-      <Pagination totalPages={Math.ceil(totalResults / PAGE_SIZE)} />
+      <Pagination
+        totalPages={Math.ceil(totalResults / PAGE_SIZE)}
+        onPageClick={handlePageClick}
+      />
     </>
   );
 };
