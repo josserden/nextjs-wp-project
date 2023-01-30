@@ -11,7 +11,7 @@ export const Filters = () => {
   return (
     <FiltersContainer>
       <Form>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-1">
           <CheckboxLabel>
             <FormInput type="checkbox" className="grow-1" />
             <LabelText className="shrink">Has parking</LabelText>
@@ -25,12 +25,12 @@ export const Filters = () => {
 
         <div className="flex items-center justify-center gap-5">
           <label className="relative">
-            <LabelText class="absolute -top-6 left-2">Min price</LabelText>
+            <LabelText className="absolute -top-6 left-2">Min price</LabelText>
             <FormInput type="number" className="w-80" placeholder="Min price" />
           </label>
 
           <LabelText className="relative">
-            <LabelText class="absolute -top-6 left-2">Max price</LabelText>
+            <LabelText className="absolute -top-6 left-2">Max price</LabelText>
             <FormInput type="number" className="w-80" placeholder="Max price" />
           </LabelText>
         </div>
