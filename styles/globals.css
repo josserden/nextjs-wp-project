@@ -10,6 +10,6 @@ body {
 
 @layer components {
   .btn {
-    @apply inline-flex whitespace-nowrap rounded bg-pink-600 px-4 py-2 font-bold text-slate-50 transition-colors hover:bg-pink-500;
+    @apply inline-flex whitespace-nowrap rounded bg-pink-600 px-4 py-2 font-bold uppercase text-slate-50 transition-colors hover:bg-pink-500;
   }
 }
