@@ -1,12 +1,13 @@
 import client from 'client';
 import { gql } from '@apollo/client';
+import { PAGE_SIZE } from 'utils/constants';
 
 const handler = async (req, res) => {
   try {
     const { data } = await client.query({
       query: gql`
         query AllPropertiesQuery {
-          properties(where: { offsetPagination: { size: 3, offset: 0 } }) {
+          properties(where: { offsetPagination: { size: ${PAGE_SIZE}, offset: 0 } }) {
             pageInfo {
               offsetPagination {
                 total

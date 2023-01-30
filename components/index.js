@@ -7,6 +7,7 @@ export * from './Cover/Cover';
 export * from './Heading/Heading';
 export * from './MainMenu/MainMenu';
 export * from './Page/Page';
+export * from './Pagination/Pagination';
 export * from './Paragraph/Paragraph';
 export * from './PostTitle/PostTitle';
 export * from './PropertyCard/PropertyCard';
