@@ -13,9 +13,9 @@ export const Filters = ({ onSearch }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    const { search } = window.location;
-    const { hasParking, petFriendly, minPrice, maxPrice } =
-      queryString.parse(search);
+    const { hasParking, petFriendly, minPrice, maxPrice } = queryString.parse(
+      window.location.search,
+    );
 
     if (hasParking === 'true') {
       dispatch({ type: 'hasParking' });

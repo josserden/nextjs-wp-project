@@ -47,7 +47,7 @@ export const BlockRenderer = ({ blocks = [] }) => {
           />
         );
 
-      case 'acf/cta-button':
+      case 'acf/ctabutton':
         return (
           <CallToActionBtn
             key={id}
