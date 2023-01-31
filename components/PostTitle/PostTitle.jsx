@@ -1,5 +1,5 @@
 import { usePageContext } from 'context/page';
-import { Heading } from 'components';
+import { Heading } from 'components/Heading';
 
 export const PostTitle = ({ level, textAlign }) => {
   const { title } = usePageContext();

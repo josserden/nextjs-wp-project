@@ -1,4 +1,4 @@
-import { BlockRenderer, MainMenu, Page } from 'components';
+import { Page } from 'components/Page';
 import PropTypes from 'prop-types';
 import { getPageStaticProps } from 'utils/getPageStaticProps';
 

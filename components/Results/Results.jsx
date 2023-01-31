@@ -1,4 +1,4 @@
-import { PropertyCard } from 'components';
+import { PropertyCard } from 'components/PropertyCard';
 import PropTypes from 'prop-types';
 import { propsCreator } from 'utils/propsCreator';
 

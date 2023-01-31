@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import queryString from 'query-string';
-import { Filters, Pagination, Results } from 'components';
 import { PAGE_SIZE } from 'utils/constants';
+import { Filters } from 'components/Filters';
+import { Pagination } from 'components/Pagination';
+import { Results } from 'components/Results';
 
 export const PropertySearch = () => {
   const [properties, setProperties] = useState([]);

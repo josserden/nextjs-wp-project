@@ -1,14 +1,14 @@
-import {
-  faBathtub,
-  faBed,
-  faParking,
-  faDog,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import Link from 'next/link';
 import numeral from 'numeral';
 import PropTypes from 'prop-types';
+import {
+  faBathtub,
+  faBed,
+  faDog,
+  faParking,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const PropertyCard = ({ property }) => {
   const {

@@ -1,6 +1,6 @@
-import { ButtonLink } from 'components';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+import { ButtonLink } from 'components/ButtonLink';
 import { FaHouseUser, FaHeart } from 'react-icons/fa';
 
 export const MainMenu = props => {

@@ -1,5 +1,5 @@
 import { useForm, ValidationError } from '@formspree/react';
-import { FormInput } from 'components';
+import { FormInput } from 'components/FormInput';
 import PropTypes from 'prop-types';
 
 export const FormspreeForm = ({ formId }) => {

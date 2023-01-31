@@ -1,4 +1,4 @@
-import { ButtonLink } from 'components';
+import { ButtonLink } from 'components/ButtonLink';
 import React from 'react';
 import PropTypes from 'prop-types';
 

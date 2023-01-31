@@ -1,6 +1,6 @@
 import { useReducer, useEffect } from 'react';
 import queryString from 'query-string';
-import { FormInput } from 'components';
+import { FormInput } from 'components/FormInput';
 import { reducer, initialState } from 'utils/constants';
 import {
   FiltersContainer,

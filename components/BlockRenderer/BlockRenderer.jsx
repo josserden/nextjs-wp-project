@@ -1,16 +1,14 @@
 import Image from 'next/image';
 import PropTypes from 'prop-types';
-import {
-  CallToActionBtn,
-  Column,
-  Columns,
-  Cover,
-  FormspreeForm,
-  Heading,
-  Paragraph,
-  PostTitle,
-  PropertySearch,
-} from 'components';
+import { CallToActionBtn } from 'components/CallToActionBtn';
+import { Column } from 'components/Column';
+import { Columns } from 'components/Columns';
+import { Cover } from 'components/Cover';
+import { FormspreeForm } from 'components/FormspreeForm';
+import { Heading } from 'components/Heading';
+import { Paragraph } from 'components/Paragraph';
+import { PostTitle } from 'components/PostTitle';
+import { PropertyFeatures } from 'components/PropertyFeatures';
 import { theme } from 'theme';
 
 export const BlockRenderer = ({ blocks = [] }) => {
@@ -103,6 +101,9 @@ export const BlockRenderer = ({ blocks = [] }) => {
 
       case 'acf/formspreeform':
         return <FormspreeForm key={id} formId={attributes.data.form_id} />;
+
+      case 'acf/propertyfeatures':
+        return <PropertyFeatures key={id} />;
 
       default: {
         console.log('UNKNOWN', block);

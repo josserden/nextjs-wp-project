@@ -1,6 +1,7 @@
-import { BlockRenderer, MainMenu } from 'components';
-import { PageProvider } from 'context/page';
 import PropTypes from 'prop-types';
+import { PageProvider } from 'context/page';
+import { BlockRenderer } from 'components/BlockRenderer';
+import { MainMenu } from 'components/MainMenu';
 
 export const Page = props => {
   const { mainMenuItems, blocks, callToAction } = props;

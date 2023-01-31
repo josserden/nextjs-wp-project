@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 import client from 'client';
-import { Page } from 'components';
+import { Page } from 'components/Page';
 import { getPageStaticProps } from 'utils/getPageStaticProps';
 
 export default Page;
