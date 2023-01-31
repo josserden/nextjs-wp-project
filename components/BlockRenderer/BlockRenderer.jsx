@@ -10,6 +10,7 @@ import { Paragraph } from 'components/Paragraph';
 import { PostTitle } from 'components/PostTitle';
 import { PropertyFeatures } from 'components/PropertyFeatures';
 import { PropertySearch } from 'components/PropertySearch';
+import { Gallery } from 'components/Gallery';
 import { theme } from 'theme';
 
 export const BlockRenderer = ({ blocks = [] }) => {
@@ -105,6 +106,16 @@ export const BlockRenderer = ({ blocks = [] }) => {
 
       case 'acf/propertyfeatures':
         return <PropertyFeatures key={id} />;
+
+      case 'core/gallery':
+        return (
+          <Gallery
+            key={id}
+            columns={attributes.columns ?? 3}
+            cropImages={attributes.imageCrop}
+            items={innerBlocks}
+          />
+        );
 
       default: {
         console.log('UNKNOWN', block);
