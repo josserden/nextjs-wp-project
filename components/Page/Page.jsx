@@ -9,7 +9,9 @@ export const Page = props => {
   console.log('Page', props);
 
   return (
-    <PageProvider value={{ title: props.title }}>
+    <PageProvider
+      value={{ title: props.title, propertyFeatures: props.propertyFeatures }}
+    >
       <MainMenu items={mainMenuItems} callToAction={callToAction} />
       <BlockRenderer blocks={blocks} />
     </PageProvider>

@@ -19,6 +19,13 @@ export const getPageStaticProps = async context => {
             id
             title
             blocksJSON
+            propertyFeatures {
+              bathrooms
+              bedrooms
+              hasParking
+              petFriendly
+              price
+            }
           }
         }
 
@@ -71,6 +78,7 @@ export const getPageStaticProps = async context => {
     destination: data.acfOptionsMainMenu.mainMenu.callToAction?.destination.uri,
   };
   const title = data.nodeByUri.title;
+  const propertyFeatures = data.nodeByUri.propertyFeatures || null;
 
   return {
     props: {
@@ -78,6 +86,7 @@ export const getPageStaticProps = async context => {
       blocks,
       mainMenuItems,
       callToAction,
+      propertyFeatures,
     },
   };
 };
