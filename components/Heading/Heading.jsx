@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getTextAlign, getFontSize } from 'utils';
+import { getFontSize, getTextAlign } from 'utils';
 
 export const Heading = ({ content, level, textAlign }) => {
   const HeadingTag = React.createElement(`h${level}`, {

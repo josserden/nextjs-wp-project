@@ -1,5 +1,6 @@
 import { useReducer, useEffect } from 'react';
 import queryString from 'query-string';
+import PropTypes from 'prop-types';
 import { FormInput } from 'components/FormInput';
 import { reducer, initialState } from 'utils/constants';
 import {
@@ -103,4 +104,8 @@ export const Filters = ({ onSearch }) => {
       </Form>
     </FiltersContainer>
   );
+};
+
+Filters.propTypes = {
+  onSearch: PropTypes.func.isRequired,
 };
