@@ -6,7 +6,7 @@ export const Paragraph = ({ content, textAlign = 'left', textColor }) => {
   return (
     <p
       dangerouslySetInnerHTML={{ __html: relativeToAbsoluteUrls(content) }}
-      className={`mx-auto max-w-5xl ${getTextAlign(textAlign)}`}
+      className={`mx-auto my-2 max-w-5xl ${getTextAlign(textAlign)}`}
       style={{
         color: textColor,
       }}

@@ -5,12 +5,13 @@ import { Column } from 'components/Column';
 import { Columns } from 'components/Columns';
 import { Cover } from 'components/Cover';
 import { FormspreeForm } from 'components/FormspreeForm';
+import { Gallery } from 'components/Gallery';
 import { Heading } from 'components/Heading';
 import { Paragraph } from 'components/Paragraph';
 import { PostTitle } from 'components/PostTitle';
 import { PropertyFeatures } from 'components/PropertyFeatures';
 import { PropertySearch } from 'components/PropertySearch';
-import { Gallery } from 'components/Gallery';
+import { TickItem } from 'components/TickItem';
 import { theme } from 'theme';
 
 export const BlockRenderer = ({ blocks = [] }) => {
@@ -19,7 +20,6 @@ export const BlockRenderer = ({ blocks = [] }) => {
 
     switch (name) {
       case 'core/cover':
-        console.log('COVER', block);
         return (
           <Cover key={id} url={attributes.url}>
             <BlockRenderer blocks={innerBlocks} />
@@ -60,14 +60,36 @@ export const BlockRenderer = ({ blocks = [] }) => {
 
       case 'core/columns':
         return (
-          <Columns key={id} isStackedOnMobile={attributes.isStackedOnMobile}>
+          <Columns
+            key={id}
+            isStackedOnMobile={attributes.isStackedOnMobile}
+            textColor={
+              theme[block.attributes.textColor] ||
+              block.attributes.style?.color?.text
+            }
+            backgroundColor={
+              theme[block.attributes.backgroundColor] ||
+              block.attributes.style?.color?.background
+            }
+          >
             <BlockRenderer blocks={innerBlocks} />
           </Columns>
         );
 
       case 'core/column':
         return (
-          <Column key={id} width={attributes.width}>
+          <Column
+            key={id}
+            width={attributes.width}
+            textColor={
+              theme[block.attributes.textColor] ||
+              block.attributes.style?.color?.text
+            }
+            backgroundColor={
+              theme[block.attributes.backgroundColor] ||
+              block.attributes.style?.color?.background
+            }
+          >
             <BlockRenderer key={id} blocks={innerBlocks} />
           </Column>
         );
@@ -117,8 +139,14 @@ export const BlockRenderer = ({ blocks = [] }) => {
           />
         );
 
+      case 'acf/tickitem':
+        return (
+          <TickItem key={id}>
+            <BlockRenderer blocks={innerBlocks} />
+          </TickItem>
+        );
+
       default: {
-        console.log('UNKNOWN', block);
         return null;
       }
     }
