@@ -26,11 +26,13 @@ export const getStaticPaths = async () => {
   });
 
   return {
-    paths: [...data.pages.nodes, ...data.properties.nodes].map(({ uri }) => ({
-      params: {
-        slug: uri.substring(1).split('/'),
-      },
-    })),
+    paths: [...data.pages.nodes, ...data.properties.nodes]
+      .filter(({ uri }) => uri !== '/')
+      .map(({ uri }) => ({
+        params: {
+          slug: uri.substring(1).split('/'),
+        },
+      })),
     fallback: false,
   };
 };
