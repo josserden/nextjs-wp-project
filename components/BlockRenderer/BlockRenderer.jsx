@@ -9,6 +9,7 @@ import { Heading } from 'components/Heading';
 import { Paragraph } from 'components/Paragraph';
 import { PostTitle } from 'components/PostTitle';
 import { PropertyFeatures } from 'components/PropertyFeatures';
+import { PropertySearch } from 'components/PropertySearch';
 import { theme } from 'theme';
 
 export const BlockRenderer = ({ blocks = [] }) => {
